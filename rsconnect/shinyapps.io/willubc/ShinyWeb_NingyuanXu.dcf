@@ -5,9 +5,9 @@ account: willubc
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7443541
-bundleId: 6448209
+bundleId: 6448689
 url: https://willubc.shinyapps.io/ShinyWeb_NingyuanXu/
-when: 1666897222.9705
-lastSyncTime: 1666897222.97052
+when: 1666906825.52637
+lastSyncTime: 1666906825.52639
 asMultiple: FALSE
 asStatic: FALSE

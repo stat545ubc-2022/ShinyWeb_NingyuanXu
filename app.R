@@ -16,11 +16,17 @@ ui <- fluidPage(
       uiOutput("countryOutput")
     ),
     mainPanel(
-      plotOutput("coolplot"),
-      br(), br(),
-      tableOutput("results")
+      # Modification: add an image to UI
+      img(src='image.jpg', height="25%", width="25%"),
+      # Modification: add tabsetPanel() with plot and table
+      tabsetPanel(
+        tabPanel("Plot", plotOutput("coolplot")),
+        tabPanel("Table", tableOutput("results"))
+      )
     )
-  )
+  ),
+  # Modification: add download link to UI
+  downloadLink('downloadData', 'Download Dataset')
 )
 
 server <- function(input, output) {
@@ -54,6 +60,16 @@ server <- function(input, output) {
   output$results <- renderTable({
     filtered()
   })
+  
+  # Modification: allow users to down the dataset 
+  output$downloadData <- downloadHandler(
+     filename = function() {
+       paste('dataset', '.csv', sep='')
+     },
+     content = function(con) {
+       write.csv(bcl, con)
+     }
+  )
 }
 
 shinyApp(ui = ui, server = server)
